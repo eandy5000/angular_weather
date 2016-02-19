@@ -1,6 +1,4 @@
-Angular Template
+Angular Weather API
 ==============
 includes angular, bootstrap, sass, grunt
 ------------------
-
-public/scripts/app.js is ready to write angular module
