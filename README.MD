@@ -1,4 +1,4 @@
-Bootstrap & Sass Template
+Angular app with weather API
 ==============
-Project starter template with bootstrap sass and jquery configured
+
 ------------------
