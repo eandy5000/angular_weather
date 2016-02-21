@@ -22,10 +22,36 @@ weatherApp.config(function($routeProvider){
 
 //controllers
 
-weatherApp.controller('homeController', ['$scope', function($scope){
+weatherApp.controller('homeController', ['$scope', 'cityService', function($scope, cityService){
+  $scope.city = cityService.city;
+  $scope.$watch('city', function(){
+    cityService.city = $scope.city;
+  });
+}]);
+
+weatherApp.controller('forecastController', ['$scope', '$resource','cityService',function($scope, $resource, cityService){
+  $scope.city = cityService.city;
+  $scope.$watch('city', function(){
+    cityService.city = $scope.city;
+  });
+
+  $scope.weatherAPI =
+    $resource("http://api.openweathermap.org/data/2.5/forecast/daily", {callback:"JSON_CALLBACK"}, {
+      get:{method:"JSONP"}
+    });
+
+  $scope.weatherResult = $scope.weatherAPI.get({
+    q: $scope.city,
+    cnt: 2,
+    APPID:"e94cc7af966c988768d750afb84353b6"
+  });
+
+  console.log($scope.weatherResult);
 
 }]);
 
-weatherApp.controller('forecastController', ['$scope', function($scope){
+// services
 
-}]);
+weatherApp.service('cityService', function(){
+  this.city = "New York";
+});
