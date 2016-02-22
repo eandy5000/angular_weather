@@ -1,1 +1,11 @@
 <h1>Forecast for {{city}}</h1>
+<p>
+  <a href="#/">Back to Search</a>
+</p>
+<a href="#/forecast/3" class="btn btn-info">3 Day</a>
+<a href="#/forecast/5" class="btn btn-info">5 Day</a>
+<a href="#/forecast/7" class="btn btn-info">7 Day</a>
+
+<div class="row" ng-repeat="w in weatherResult.list">
+<weather-report><weather-report/>
+</div>
